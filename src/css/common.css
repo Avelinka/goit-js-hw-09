@@ -18,9 +18,8 @@ img {
 }
 
 input#datetime-picker {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  text-align: center;
   margin: 0 auto 24px;
   width: 200px;
   height: 32px;
@@ -43,6 +42,10 @@ button {
   border: none;
   border-radius: 20px;
   transform: background-color 300ms linear;
+}
+
+button[disabled] {
+  background-color: #706e6e;
 }
 
 button:hover,
