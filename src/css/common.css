@@ -17,6 +17,42 @@ img {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #212121;
+  display: block;
+  padding: 24px 0;
+  transition: color 300ms linear;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 64px;
+  height: 4px;
+  background-color: #030303;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 300ms linear;
+}
+
+a:hover,
+a:focus {
+  background-color: #030303;
+}
+
+a:hover::after,
+a:focus::after {
+  transform: scaleX(1);
+}
+
 input#datetime-picker {
   display: block;
   text-align: center;
@@ -33,7 +69,7 @@ button {
   justify-content: center;
   align-items: center;
   margin: 0 auto 24px;
-  width: 96px;
+  width: 144px;
   height: 48px;
   font-size: 20px;
   cursor: pointer;
@@ -44,12 +80,12 @@ button {
   transform: background-color 300ms linear;
 }
 
-button[disabled] {
+button .disabled {
   background-color: #706e6e;
 }
 
-button:hover,
-button:focus {
+button:not(.disabled):hover,
+button:not(.disabled):focus {
   background-color: #030303;
 }
 
@@ -75,4 +111,30 @@ button:focus {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form label {
+  max-width: 400 px;
+  display: flex;
+  gap: 24px;
+  margin: 0 auto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.form label input {
+  text-align: center;
+  margin: 0 auto 24px;
+  width: 200px;
+  height: 32px;
+  font-weight: 600;
+  border-radius: 20px;
 }
