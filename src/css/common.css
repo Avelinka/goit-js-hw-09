@@ -36,7 +36,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #030303;
+  color: #180b44;
 }
 
 input#datetime-picker {
@@ -66,13 +66,13 @@ button {
   transform: background-color 300ms linear;
 }
 
-button .disabled {
+button[disabled] {
   background-color: #706e6e;
 }
 
-button:not(.disabled):hover,
-button:not(.disabled):focus {
-  background-color: #030303;
+button:not([disabled]):hover,
+button:not([disabled]):focus {
+  background-color: #180b44;
 }
 
 .timer {
