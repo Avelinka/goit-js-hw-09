@@ -16,3 +16,60 @@ img {
   display: block;
   max-width: 100%;
 }
+
+input#datetime-picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 24px;
+  width: 200px;
+  height: 32px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+button {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 24px;
+  width: 96px;
+  height: 48px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #212121;
+  color: #fafafa;
+  border: none;
+  border-radius: 20px;
+  transform: background-color 300ms linear;
+}
+
+button:hover,
+button:focus {
+  background-color: #030303;
+}
+
+.timer {
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.timer span {
+  display: block;
+  text-align: center;
+}
+
+.value {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.label {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
