@@ -9,7 +9,7 @@ const options = {
   cssAnimationStyle: 'from-right',
 };
 
-form.addEventListener('click', onPromiseCreate);
+form.addEventListener('submit', onPromiseCreate);
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -31,20 +31,8 @@ function onPromiseCreate(event) {
   let inputDelay = Number(delay.value);
   let inputStep = Number(step.value);
   let inputAmount = Number(amount.value);
-  // Перевірка на правильність введених даних
-
-  if (!inputDelay || !inputStep || !inputAmount) {
-    Notiflix.Notify.failure('❌ Please fill in all fields.', options);
-    return;
-  }
-
-  // if (isNaN(inputDelay) || isNaN(inputStep) || isNaN(inputAmount)) {
-  //   Notiflix.Notify.failure('❌ Please enter valid numbers', options);
-  //   return;
-  // }
 
   for (let i = 1; i <= inputAmount; i++) {
-    inputDelay += inputStep;
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
@@ -58,6 +46,6 @@ function onPromiseCreate(event) {
           options
         );
       });
-    event.currentTarget.reset();
+    inputDelay += inputStep;
   }
 }
