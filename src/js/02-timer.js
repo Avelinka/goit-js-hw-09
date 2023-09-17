@@ -4,13 +4,28 @@ import Notiflix from 'notiflix';
 
 const datetimePicker = document.querySelector('#datetime-picker');
 const startButton = document.querySelector('[data-start]');
-const timer = document.querySelector('.timer');
 const daysValue = document.querySelector('[data-days]');
 const hoursValue = document.querySelector('[data-hours]');
 const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
 
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    const selectedDate = selectedDates[0];
+    if (selectedDate <= new Date()) {
+      Notiflix.Notify.failure('Please choose a date in the future.');
+    } else {
+      startButton.disabled = false;
+    }
+  },
+};
+
 let countdownIntervalId;
+startButton.disabled = true;
 
 function convertMs(ms) {
   const second = 1000;
@@ -40,17 +55,20 @@ function startCountdown() {
 
   if (selectedDate <= new Date()) {
     Notiflix.Notify.failure('Please choose a date in the future.');
+    startButton.disabled = true;
     return;
   }
 
   startButton.disabled = true;
+  datetimePicker.disabled = true;
+
   countdownIntervalId = setInterval(() => {
     const currentTime = new Date();
     const timeRemaining = selectedDate - currentTime;
 
     if (timeRemaining <= 0) {
       clearInterval(countdownIntervalId);
-      startButton.disabled = false;
+      datetimePicker.disabled = false;
       updateTimerDisplay(0);
       Notiflix.Notify.success('Countdown completed!');
     } else {
@@ -61,17 +79,4 @@ function startCountdown() {
 
 startButton.addEventListener('click', startCountdown);
 
-flatpickr('#datetime-picker', {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
-    if (selectedDate <= new Date()) {
-      Notiflix.Notify.failure('Please choose a date in the future.');
-    } else {
-      startButton.disabled = false;
-    }
-  },
-});
+flatpickr('#datetime-picker', options);

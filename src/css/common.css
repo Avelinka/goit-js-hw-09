@@ -19,11 +19,14 @@ img {
 
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 200px;
+  text-align: center;
 }
 
 a {
   text-decoration: none;
-  position: relative;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -36,7 +39,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #180b44;
+  color: #216bcc;
 }
 
 input#datetime-picker {
@@ -47,6 +50,10 @@ input#datetime-picker {
   height: 32px;
   font-weight: 600;
   border-radius: 20px;
+}
+
+input#datetime-picker[disabled] {
+  color: #fafafa;
 }
 
 button {
@@ -66,13 +73,13 @@ button {
   transform: background-color 300ms linear;
 }
 
-button[disabled] {
+[disabled] {
   background-color: #706e6e;
 }
 
 button:not([disabled]):hover,
 button:not([disabled]):focus {
-  background-color: #180b44;
+  background-color: #216bcc;
 }
 
 .timer {
