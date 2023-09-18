@@ -32,7 +32,7 @@ function onPromiseCreate(event) {
   let inputStep = Number(step.value);
   let inputAmount = Number(amount.value);
 
-  if (inputStep <= 0 || inputDelay <= 0 || inputAmount <= 0) {
+  if (inputStep < 0 || inputDelay < 0 || inputAmount <= 0) {
     Notiflix.Notify.failure(
       '❌ Please enter valid values for step, delay, and amount.',
       options
