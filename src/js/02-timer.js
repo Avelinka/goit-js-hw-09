@@ -9,6 +9,8 @@ const hoursValue = document.querySelector('[data-hours]');
 const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
 
+const resetButton = document.querySelector('[data-reset]');
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -26,6 +28,7 @@ const options = {
 
 let countdownIntervalId;
 startButton.disabled = true;
+resetButton.disabled = true;
 
 function convertMs(ms) {
   const second = 1000;
@@ -61,6 +64,7 @@ function startCountdown() {
 
   startButton.disabled = true;
   datetimePicker.disabled = true;
+  resetButton.disabled = false;
 
   countdownIntervalId = setInterval(() => {
     const currentTime = new Date();
@@ -77,6 +81,19 @@ function startCountdown() {
   }, 1000);
 }
 
+function resetTimer() {
+  clearInterval(countdownIntervalId);
+  datetimePicker.disabled = false;
+  daysValue.textContent = '00';
+  hoursValue.textContent = '00';
+  minutesValue.textContent = '00';
+  secondsValue.textContent = '00';
+  startButton.disabled = true;
+  resetButton.disabled = true;
+}
+
 startButton.addEventListener('click', startCountdown);
+
+resetButton.addEventListener('click', resetTimer);
 
 flatpickr('#datetime-picker', options);
